@@ -31,8 +31,11 @@ class TaichiEnv:
         self.simulator = MPMSimulator(cfg.SIMULATOR, self.primitives)
         self.renderer = Renderer(cfg.RENDERER, self.primitives)
 
-        if nn:
+        if nn is True:
             self.nn = MLP(self.simulator, self.primitives, (256, 256))
+        elif nn is not None:
+            # HACK
+            self.nn = nn
 
         if loss:
             self.loss = Loss(cfg.ENV.loss, self.simulator)
