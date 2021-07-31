@@ -11,7 +11,7 @@ cfg = _C
 # ---------------------------------------------------------------------------- #
 _C.SIMULATOR = CN()
 _C.SIMULATOR.dim = 3
-_C.SIMULATOR.quality = 1  # control the number of particles and size of the grids
+_C.SIMULATOR.quality = 1.0  # control the number of particles and size of the grids
 _C.SIMULATOR.yield_stress = 50.
 _C.SIMULATOR.dtype = "float64"
 _C.SIMULATOR.max_steps = 1024
