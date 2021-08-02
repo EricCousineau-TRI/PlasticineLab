@@ -80,6 +80,25 @@ class RollingPin(Capsule):
         self.position[f+1] = max(min(self.position[f] + x_dir, self.xyz_limit[1]), self.xyz_limit[0])
 
 
+class CustomRollingPin(Capsule):
+    # hacked rollingpin's capsule...
+    @ti.kernel
+    def forward_kinematics(self, f: ti.i32):
+        vel = self.v[f]
+        dw = vel[0]  # rotate about object y
+        dth = vel[1]  # rotate about the world y  # what?
+        dy = vel[2]  # decrease in y coord...
+        y_dir = qrot(self.rotation[f], ti.Vector([0., -1., 0.]))
+        x_dir = ti.Vector([0., 1., 0.]).cross(y_dir) * dw * 0.03  # move toward x, R=0.03 is hand crafted...
+        x_dir[1] = dy  # direction
+        self.rotation[f+1] = qmul(
+            w2quat(ti.Vector([0., -dth, 0.]), self.dtype),
+            qmul(self.rotation[f], w2quat(ti.Vector([0., dw, 0.]), self.dtype))
+        )
+        #print(self.rotation[f+1], self.rotation[f+1].dot(self.rotation[f+1]))
+        self.position[f+1] = max(min(self.position[f] + x_dir, self.xyz_limit[1]), self.xyz_limit[0])
+
+
 class Chopsticks(Capsule):
     state_dim = 8
     def __init__(self, **kwargs):

@@ -3,17 +3,16 @@ SIMULATOR:
   n_particles: 10000
   yield_stress: 50.
   ground_friction: 1.5
-  gravity: (0, -10.0, 0)
 SHAPES:
   - shape: box
     width: (0.3, 0.1, 0.3)
-    init_pos: (0.5, 0.3, 0.5)
+    init_pos: (0.5, 0.05, 0.5)
     color: 100
 PRIMITIVES:
   - shape: RollingPin
     h: 0.3
     r: 0.03
-    init_pos: (0.5, 0.5, 0.5)
+    init_pos: (0.5, 0.123, 0.5)
     init_rot: (0.707, 0.707, 0., 0.)
     color: (0.8, 0.8, 0.8)
     friction: 0.9

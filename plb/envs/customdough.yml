@@ -1,0 +1,36 @@
+SIMULATOR:
+  E: 5000.
+  n_particles: 10000  # This is effectively unused?
+  yield_stress: 50.
+  ground_friction: 1.5
+  gravity: (0, -9.81, 0)
+SHAPES:
+  - shape: box
+    width: (0.1, 0.1, 0.1)
+    init_pos: (0.5, 0.1, 0.5)
+    n_particles: 5000
+    color: 100
+PRIMITIVES:
+  - shape: CustomRollingPin
+    h: 0.3
+    r: 0.01
+    init_pos: (0.5, 0.5, 0.5)
+    init_rot: (1.0, 0., 0., 0.)
+    color: (0.8, 0.8, 0.8)
+    friction: 0.9
+    action:
+      dim: 3
+      scale: (0.6666666666666667, 0.06666666666666668, 0.001)
+ENV:
+  loss:
+    target_path: /needs/override
+RENDERER:
+  camera_pos: (0.5, 2.5, 2.)
+  camera_rot: (1.0, 0.)
+  use_directional_light: True
+  light_direction: (0., 1., 0.)
+VARIANTS:
+  - ENV:
+      loss:
+        # TODO(eric.cousineau): Choose another target.
+        target_path: envs/assets/Rollingpin3D-v1.npy
