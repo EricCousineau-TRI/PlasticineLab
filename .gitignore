@@ -2,6 +2,7 @@
 /output/
 *.jpg
 *.png
+*.mp4
 data
 *.avi
 *feh_*
