@@ -15,7 +15,7 @@ PRIMITIVES:
     h: 0.3
     r: 0.01
     init_pos: (0.5, 0.5, 0.5)
-    init_rot: (1.0, 0., 0., 0.)
+    init_rot: (0.707, 0.707, 0., 0.)
     color: (0.8, 0.8, 0.8)
     friction: 0.9
     action:

@@ -14,7 +14,7 @@ for env_name in ['Move', 'Torus', 'Rope', 'Writer', "Pinch", "Rollingpin", "Chop
 register(
     id="CustomDough-v1",
     entry_point=f"plb.envs.env:PlasticineEnv",
-    kwargs={'cfg_path': "customdough.yml"},
+    kwargs={'cfg_path': "customdough.yml", "version": 1},
     max_episode_steps=50,
 )
 
