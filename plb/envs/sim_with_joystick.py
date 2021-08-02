@@ -48,8 +48,17 @@ def main():
         act[2] = events[JoystickHat.UP_DOWN] * 0.01
 
         print(act)
+
+        t_start = time.time()
         env.step(act)
+        dt_step = time.time() - t_start
+        print(f"  dt_step: {dt_step}")
+
+        t_start = time.time()
         img = env.render(mode='rgb_array')
+        dt_render = time.time() - t_start
+        print(f"  dt_render: {dt_render}")
+
         bgr = img[..., ::-1]
         cv2.imshow("sim", bgr)
         cv2.waitKey(1)

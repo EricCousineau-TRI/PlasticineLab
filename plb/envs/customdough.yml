@@ -7,20 +7,22 @@ SIMULATOR:
 SHAPES:
   - shape: box
     width: (0.1, 0.1, 0.1)
-    init_pos: (0.5, 0.1, 0.5)
+    init_pos: (0.5, 0.05, 0.5)
     n_particles: 1000
     color: 100
 PRIMITIVES:
   - shape: CustomRollingPin
-    h: 0.3
-    r: 0.01
-    init_pos: (0.5, 0.5, 0.5)
+    h: 0.2
+    r: 0.03
+    init_pos: (0.5, 0.15, 0.5)
     init_rot: (0.707, 0.707, 0., 0.)
     color: (0.8, 0.8, 0.8)
     friction: 0.9
     action:
       dim: 3
       scale: (1.0, 1.0, 1.0) #0.6666666666666667, 0.06666666666666668, 0.001)
+    upper_bound: (1.0, 1.0, 1.0)
+    lower_bound: (0.0, 0.0, 0.0)
 ENV:
   loss:
     target_path: /needs/override
