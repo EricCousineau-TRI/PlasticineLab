@@ -36,6 +36,9 @@ RENDERER:
   camera_rot: (1.0, 0.)
   use_directional_light: True
   light_direction: (0., 1., 0.)
+  # image_res: (256, 256)
+  image_res: (128, 128)
+  voxel_res: (88, 88, 88)
 VARIANTS:
   - ENV:
       loss:
