@@ -31,7 +31,7 @@ ENV:
   loss:
     target_path: /needs/override
 RENDERER:
-  # enabled: False
+  enabled: False
   camera_pos: (0.5, 2.5, 2.)
   camera_rot: (1.0, 0.)
   use_directional_light: True
