@@ -17,6 +17,7 @@ class PlasticineEnv(gym.Env):
         self.taichi_env = TaichiEnv(cfg, nn) # build taichi environment
         self.taichi_env.initialize()
         self.cfg = cfg.ENV
+        self._full_cfg = cfg
         self.taichi_env.set_copy(True)
         self._init_state = self.taichi_env.get_state()
         self._n_observed_particles = self.cfg.n_observed_particles
