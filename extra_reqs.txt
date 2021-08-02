@@ -4,3 +4,4 @@ jupyterlab == 3.0.12
 jedi == 0.17.2
 
 moviepy
+pygame

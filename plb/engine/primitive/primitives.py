@@ -66,8 +66,8 @@ class RollingPin(Capsule):
     @ti.kernel
     def forward_kinematics(self, f: ti.i32):
         vel = self.v[f]
-        dw = vel[0]  # rotate about object y
-        dth = vel[1]  # rotate about the world w
+        dw = vel[0]  # move along x, rotate about body y
+        dth = vel[1]  # rotate about the world y
         dy = vel[2]  # decrease in y coord...
         y_dir = qrot(self.rotation[f], ti.Vector([0., -1., 0.]))
         x_dir = ti.Vector([0., 1., 0.]).cross(y_dir) * dw * 0.03  # move toward x, R=0.03 is hand crafted...
@@ -85,11 +85,12 @@ class CustomRollingPin(Capsule):
     @ti.kernel
     def forward_kinematics(self, f: ti.i32):
         vel = self.v[f]
-        dw = vel[0]  # rotate about object y
+        dw = vel[0]  # "roll" along body x axis (rotate about body y, translate along x)
         dth = vel[1]  # rotate about the world y  # what?
         dy = vel[2]  # decrease in y coord...
         y_dir = qrot(self.rotation[f], ti.Vector([0., -1., 0.]))
-        x_dir = ti.Vector([0., 1., 0.]).cross(y_dir) * dw * 0.03  # move toward x, R=0.03 is hand crafted...
+        dx_scale = 1.0  # Hand-crafted
+        x_dir = ti.Vector([0., 1., 0.]).cross(y_dir) * dw * dx_scale  # move toward x
         x_dir[1] = dy  # direction
         self.rotation[f+1] = qmul(
             w2quat(ti.Vector([0., -dth, 0.]), self.dtype),
