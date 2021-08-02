@@ -31,8 +31,10 @@ def main():
     for idx in range(T):
         print(f"idx: {idx}")
         act = np.zeros(taichi_env.primitives.action_dim)
-        env.step(act)
-        img = env.render(mode='rgb_array')
+        state = env.step(act)
+
+        print(state)
+        # img = env.render(mode='rgb_array')
         bgr = img[..., ::-1]
         cv2.imshow("sim", bgr)
         cv2.waitKey(1)

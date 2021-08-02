@@ -5,3 +5,9 @@ jedi == 0.17.2
 
 moviepy
 pygame
+
+# Hacks for testing out diff. renderers
+git+https://github.com/EricCousineau-TRI/neural_renderer.git@d1b1cfd05ae38a50a87ca9f3165fb5e9394bfacd
+
+taichi_three==0.0.5
+taichi_glsl

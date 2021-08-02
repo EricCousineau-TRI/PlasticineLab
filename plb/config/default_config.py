@@ -37,6 +37,7 @@ _C.SHAPES = list()
 # RENDERER
 # ---------------------------------------------------------------------------- #
 _C.RENDERER = RENDERER = CN()
+RENDERER.enabled = True
 RENDERER.spp = 50
 RENDERER.max_ray_depth = 2
 RENDERER.image_res = (512, 512)

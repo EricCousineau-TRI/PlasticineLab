@@ -29,7 +29,10 @@ class TaichiEnv:
         self.n_particles = cfg.SIMULATOR.n_particles = len(self.init_particles)
 
         self.simulator = MPMSimulator(cfg.SIMULATOR, self.primitives)
-        self.renderer = Renderer(cfg.RENDERER, self.primitives)
+        if cfg.RENDERER.enabled:
+            self.renderer = Renderer(cfg.RENDERER, self.primitives)
+        else:
+            self.renderer = None
 
         if nn is True:
             self.nn = MLP(self.simulator, self.primitives, (256, 256))
@@ -50,10 +53,12 @@ class TaichiEnv:
         # initialize all taichi variable according to configurations..
         self.primitives.initialize()
         self.simulator.initialize()
-        self.renderer.initialize()
+        if self.renderer is not None:
+            self.renderer.initialize()
         if self.loss:
             self.loss.initialize()
-            self.renderer.set_target_density(self.loss.target_density.to_numpy()/self.simulator.p_mass)
+            if self.renderer is not None:
+                self.renderer.set_target_density(self.loss.target_density.to_numpy()/self.simulator.p_mass)
 
         # call set_state instead of reset..
         self.simulator.reset(self.init_particles)
@@ -61,6 +66,7 @@ class TaichiEnv:
             self.loss.clear()
 
     def render(self, mode='human', **kwargs):
+        assert self.renderer is not None
         assert self._is_copy, "The environment must be in the copy mode for render ..."
         if self.n_particles > 0:
             x = self.simulator.get_x(0)

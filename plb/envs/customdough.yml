@@ -12,8 +12,12 @@ SHAPES:
     color: 100
 PRIMITIVES:
   - shape: CustomRollingPin
-    h: 0.2
-    r: 0.03
+    # Sized according to good cook rolling pin:
+    # https://www.amazon.com/Good-Cook-23830-05717000817-Classic/dp/B000ARPJRM
+    # Dimensions are taken according to major portion of rolling body (up to
+    # but not including beveled edges).
+    h: 0.254  # 10in
+    r: 0.0254  # 1in
     init_pos: (0.5, 0.15, 0.5)
     init_rot: (0.707, 0.707, 0., 0.)
     color: (0.8, 0.8, 0.8)
@@ -27,6 +31,7 @@ ENV:
   loss:
     target_path: /needs/override
 RENDERER:
+  enabled: False
   camera_pos: (0.5, 2.5, 2.)
   camera_rot: (1.0, 0.)
   use_directional_light: True
