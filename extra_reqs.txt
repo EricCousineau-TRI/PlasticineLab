@@ -9,6 +9,7 @@ git+https://github.com/openai/baselines@ea25b9e8
 # # Hacks for testing out diff. renderers
 # git+https://github.com/EricCousineau-TRI/neural_renderer.git@d1b1cfd05ae38a50a87ca9f3165fb5e9394bfacd
 
+taichi==0.7.22
 taichi_three==0.0.5
 taichi_glsl
 scikit-image
