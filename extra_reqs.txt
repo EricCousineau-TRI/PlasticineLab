@@ -1,0 +1,7 @@
+jupyterlab == 3.3.0
+
+# HACK: See https://github.com/hzaskywalker/PlasticineLab/issues/3
+git+https://github.com/openai/baselines@ea25b9e8
+
+taichi==0.7.22
+drake==1.1.0  # for tinkering

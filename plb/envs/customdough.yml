@@ -1,0 +1,45 @@
+SIMULATOR:
+  E: 5000.
+  n_particles: 10000  # This is effectively unused?
+  yield_stress: 50.
+  ground_friction: 1.5
+  gravity: (0, -9.81, 0)
+SHAPES:
+  - shape: box
+    width: (0.1, 0.1, 0.1)
+    init_pos: (0.5, 0.05, 0.5)
+    n_particles: 1000
+    color: 100
+PRIMITIVES:
+  - shape: CustomRollingPin
+    # Sized according to good cook rolling pin:
+    # https://www.amazon.com/Good-Cook-23830-05717000817-Classic/dp/B000ARPJRM
+    # Dimensions are taken according to major portion of rolling body (up to
+    # but not including beveled edges).
+    h: 0.254  # 10in
+    r: 0.0254  # 1in
+    init_pos: (0.5, 0.15, 0.5)
+    init_rot: (0.707, 0.707, 0., 0.)
+    color: (0.8, 0.8, 0.8)
+    friction: 0.9
+    action:
+      dim: 3
+      scale: (1.0, 1.0, 1.0) #0.6666666666666667, 0.06666666666666668, 0.001)
+    upper_bound: (1.0, 1.0, 1.0)
+    lower_bound: (0.0, 0.0, 0.0)
+ENV:
+  loss:
+    target_path: /needs/override
+RENDERER:
+  camera_pos: (0.5, 2.5, 2.)
+  camera_rot: (1.0, 0.)
+  use_directional_light: True
+  light_direction: (0., 1., 0.)
+  image_res: (512, 512)
+  # image_res: (128, 128)
+  voxel_res: (88, 88, 88)
+VARIANTS:
+  - ENV:
+      loss:
+        # TODO(eric.cousineau): Choose another target.
+        target_path: envs/assets/Rollingpin3D-v1.npy

@@ -11,6 +11,12 @@ for env_name in ['Move', 'Torus', 'Rope', 'Writer', "Pinch", "Rollingpin", "Chop
             kwargs={'cfg_path': f"{env_name.lower()}.yml", "version": id+1},
             max_episode_steps=50
         )
+register(
+    id="CustomDough-v1",
+    entry_point=f"plb.envs.env:PlasticineEnv",
+    kwargs={'cfg_path': "customdough.yml", "version": 1},
+    max_episode_steps=50,
+)
 
 
 def make(env_name, nn=False, sdf_loss=10, density_loss=10, contact_loss=1, soft_contact_loss=False):
