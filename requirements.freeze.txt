@@ -86,7 +86,7 @@ pexpect==4.8.0
 pickleshare==0.7.5
 Pillow==9.1.0
 pkg_resources==0.0.0
--e git+ssh://git@github.com/EricCousineau-TRI/PlasticineLab.git@2d68758760f3a14079d1ac0fab41830f7986d119#egg=plb
+-e git+ssh://git@github.com/EricCousineau-TRI/PlasticineLab.git@fe569cf92715cdacca8c717f31ffda83e44e27c2#egg=plb
 proglog==0.1.9
 prometheus-client==0.14.1
 prompt-toolkit==3.0.29

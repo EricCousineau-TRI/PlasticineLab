@@ -20,9 +20,11 @@ pip install -e .
 pip freeze > ./requirements.freeze.txt
 ```
 
-run dough thing
+run dough thing; this one isn't that great, but eh
 
 ```sh
 source ./venv/bin/activate
-python -m plb.envs.sim_with_joystick
+python -m plb.envs.sim_with_keyboard
 ```
+
+`sim_with_joystick` is better if you can get renderer to work.
